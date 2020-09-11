@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  php:
+    build:
+      context: .
+      dockerfile: .docker/development/php/Dockerfile
+    networks:
+      - default
+    volumes:
+      - ~/.composer:/tmp:delegated
+      - ./.docker/php.ini:/usr/local/etc/php/php.ini:delegated
+      - ./src:/app/src:delegated
+      - ./bin:/app/bin:delegated
+      - ./cert:/app/cert:delegated
+      - ./vendor:/app/vendor:delegated
+      - ./composer.json:/app/composer.json
+      - ./composer.lock:/app/composer.lock
+      - ./phpcs.xml:/app/phpcs.xml
