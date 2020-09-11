@@ -13,6 +13,8 @@ This docker setup includes a PHP container with Composer, no local requirements 
 
 ## Usage
 
+Put your cert bundle in the /cert folder, name it how you want as long as the file ending is .pem
+
 ``` bash
 $ docker-compose up -d
 $ php bin/run.php [your personal number]
