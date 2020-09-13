@@ -1,4 +1,4 @@
-Bank-ID Toolbox
+BankID Toolbox
 =======
 
 A simple service wrapper for testing your real Bank-id cert bundle to make sure it's valid.
