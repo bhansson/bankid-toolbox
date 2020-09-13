@@ -17,5 +17,5 @@ Put your cert bundle in the /cert folder, name it how you want as long as the fi
 
 ``` bash
 $ docker-compose up -d
-$ php bin/run.php [your personal number]
+$ php bin/auth.php [your personal number]
 ```
