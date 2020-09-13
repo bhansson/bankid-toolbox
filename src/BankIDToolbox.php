@@ -157,6 +157,10 @@ class BankIDToolbox
 
             // Key may be password protected, ask for password
             $this->keyPassword = trim(readline('Enter KEY pass phrase or hit enter if no password: '));
+
+            // Set new client if we got a password
+            $this->client = $this->guzzleFactory();
+
             if ($this->keyPassword !== '' && !openssl_x509_check_private_key(file_get_contents($certFile), [file_get_contents($keyFile), $this->keyPassword])) {
                 throw new BankIDToolboxException('Invalid key or cert');
             }
