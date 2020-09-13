@@ -145,7 +145,7 @@ class BankIDToolbox
         $keyFile = glob('cert/*.key')[0] ?? null;
         $certFile = glob('cert/*.cer')[0] ?? glob('cert/*.crt')[0] ?? null;
 
-        if (empty([$keyFile, $certFile])) {
+        if (!isset($keyFile, $certFile)) {
             throw new BankIDToolboxException('No files found for creating cert bundle.');
         }
 
