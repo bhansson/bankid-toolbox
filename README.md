@@ -1,4 +1,4 @@
-Bank-ID Test service
+Bank-ID Toolbox
 =======
 
 A simple service wrapper for testing your real Bank-id cert bundle to make sure it's valid.
@@ -8,12 +8,14 @@ This docker setup includes a PHP container with Composer, no local requirements 
 
 ## Requirements
 
-* PHP 5.6+ or 7.0+
-* [curl](http://php.net/manual/en/book.curl.php)
+* Docker
+* Your PEM chain bundle or a key and the cert from your bank
 
 ## Usage
 
-Put your cert bundle in the /cert folder, name it how you want as long as the file ending is .pem
+If you already have a cert bundle (PEM chain) then add it to /cert folder, rename it to bankid.pem
+If you only have a key and a cert, put them in the /cert folder,
+make sure the file ending is .key and .cer (or .crt) and the PEM will be created after validation.
 
 ``` bash
 $ docker-compose up -d
