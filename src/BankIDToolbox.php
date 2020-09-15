@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 
 class BankIDToolbox
 {
-    private const BANK_ID_API_LIVE_ENDPOINT = 'https://appapi2.bankid.com/rp/v5/';
+    private const BANK_ID_API_LIVE_ENDPOINT = 'https://appapi2.bankid.com/rp/v5.1/';
     private const END_USER_IP = '127.0.0.1';
     public const PEM_BUNDLE = 'cert/bankid.pem';
     public const ROOT_CA = 'cert/root.ca';
@@ -29,7 +29,8 @@ class BankIDToolbox
     {
         $options['base_uri']    = self::BANK_ID_API_LIVE_ENDPOINT;
         $options['json']        = true;
-        $options['verify']      = false;
+        $options['verify']      = true;
+        $options['curl']        = ['CURLOPT_CAINFO' => 'cert/root.ca'];
         $options['cert']        = empty($this->keyPassword)
                                 ? self::PEM_BUNDLE
                                 : [self::PEM_BUNDLE, $this->keyPassword];
