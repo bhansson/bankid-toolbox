@@ -17,7 +17,6 @@ WORKDIR /app
 
 # Copy files that rarely change
 COPY --chown=www-data:www-data composer.json .
-COPY --chown=www-data:www-data composer.lock .
 
 # Install composer packages without autoload (source does not exist yet)
 ENV COMPOSER_CACHE_DIR /cache/composer
