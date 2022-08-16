@@ -31,5 +31,5 @@ make sure the file ending is .key and .cer (or .crt) and the PEM will be created
 
 ``` bash
 $ docker-compose up -d
-$ php bin/auth.php [your personal number]
+$ php bin/auth.php [your full personal number]
 ```

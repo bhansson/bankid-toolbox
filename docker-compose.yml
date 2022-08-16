@@ -16,4 +16,5 @@ services:
       - ./cert:/app/cert:delegated
       - ./vendor:/app/vendor:delegated
       - ./composer.json:/app/composer.json
+      - ./composer.lock:/app/composer.lock
       - ./phpcs.xml:/app/phpcs.xml

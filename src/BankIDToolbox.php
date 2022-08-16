@@ -30,12 +30,17 @@ class BankIDToolbox
         $options['base_uri']    = self::BANK_ID_API_LIVE_ENDPOINT;
         $options['json']        = true;
         $options['verify']      = true;
-        $options['curl']        = ['CURLOPT_CAINFO' => 'cert/root.ca'];
+        $options['curl']        = [CURLOPT_CAINFO => 'cert/root.ca'];
         $options['cert']        = empty($this->keyPassword)
                                 ? self::PEM_BUNDLE
                                 : [self::PEM_BUNDLE, $this->keyPassword];
 
         return new Client($options);
+    }
+
+    private function validatePersonalNumber($input)
+    {
+        return preg_match('/^(19|20)\d{10}$/', $input);
     }
 
     /**
@@ -46,6 +51,10 @@ class BankIDToolbox
      */
     public function authRequest(string $personalNumber): ?string
     {
+        if (!$this->validatePersonalNumber($personalNumber)) {
+            throw new BankIDToolboxException('Wrong format for Personal Number, please use full format 12 digits, i.e. 19610527-3269');
+        }
+
         $parameters = [
             'personalNumber' => $personalNumber,
             'endUserIp'      => self::END_USER_IP,
