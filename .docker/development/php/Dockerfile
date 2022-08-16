@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1.0-experimental
 
-FROM php:7.4-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 # Install dependencies
 RUN apk add --update --no-cache

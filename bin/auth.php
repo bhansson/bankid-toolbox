@@ -30,7 +30,7 @@ if (!file_exists(BankIDToolbox::PEM_BUNDLE)) {
 }
 
 try {
-    $orderRef = $bankIDToolbox->authRequest($argv[1]);
+    $orderRef = $bankIDToolbox->authRequest(str_replace('-', '', $argv[1]));
     echo 'Open your bank-id and sign the auth request' . PHP_EOL;
 } catch (BankIDToolboxException $e) {
     exit($e->getMessage() . PHP_EOL);
